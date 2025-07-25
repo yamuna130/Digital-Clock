@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-light: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --bg-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --card-light: rgba(255, 255, 255, 0.9);
+    --card-dark: rgba(30, 41, 59, 0.9);
+    --text-light: #1e293b;
+    --text-dark: #f1f5f9;
+    --accent-light: #3b82f6;
+    --accent-dark: #60a5fa;
+    --muted-light: #64748b;
+    --muted-dark: #94a3b8;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-light);
+    transition: all 0.5s ease;
+    padding: 10px;
+}
+
+body.dark {
+    background: var(--bg-dark);
+}
+
+.clock-container {
+    text-align: center;
+    background: var(--card-light);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 900px;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+body.dark .clock-container {
+    background: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.greeting {
+    font-size: 3.5rem; /* Slightly increased */
+    font-weight: 500;
+    color: var(--accent-light);
+    margin-bottom: 1rem; /* Adjusted margin */
+    animation: pulse 2s infinite;
+}
+
+body.dark .greeting {
+    color: var(--accent-dark);
+}
+
+.digital-time {
+    font-family: 'Courier New', monospace;
+    font-size: 5.5rem; /* Slightly increased */
+    font-weight: bold;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem; /* Adjusted margin */
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+body.dark .digital-time {
+    color: var(--text-dark);
+}
+
+.digital-time:hover {
+    transform: scale(1.05);
+}
+
+.digital-date {
+    font-size: 3.0rem; /* Slightly increased */
+    color: var(--muted-light);
+    margin-bottom: 1.8rem; /* Adjusted margin */
+    font-weight: 500;
+}
+
+body.dark .digital-date {
+    color: var(--muted-dark);
+}
+
+.theme-toggle {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    color: var(--accent-light);
+    padding: 18px 35px; /* Slightly increased padding */
+    border-radius: 50px;
+    font-size: 2.7rem; /* Slightly increased */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px; /* Slightly increased gap */
+    margin-top: 1.2rem; /* Adjusted margin */
+}
+
+body.dark .theme-toggle {
+    color: var(--accent-dark);
+    background: rgba(96, 165, 250, 0.1);
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    background: rgba(59, 130, 246, 0.2);
+}
+
+body.dark .theme-toggle:hover {
+    background: rgba(96, 165, 250, 0.2);
+}
+
+.decorative {
+    margin-top: 1.8rem; /* Adjusted margin */
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem; /* Slightly increased gap between stars */
+    font-size: 4.2rem; /* Slightly increased */
+    opacity: 0.6;
+}
+
+.star {
+    animation: bounce 2s infinite;
+}
+
+.star:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.star:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40%, 43% {
+        transform: translateY(-8px);
+    }
+    70% {
+        transform: translateY(-4px);
+    }
+    90% {
+        transform: translateY(-2px);
+    }
+}
+
+@media (max-width: 768px) {
+    .digital-time {
+        font-size: 4.5rem; /* Adjusted for smaller screens */
+    }
+    
+    .clock-container {
+        padding: 25px; /* Adjusted padding for smaller screens */
+        height: auto;
+        min-height: 50vh; /* Adjusted min-height for smaller screens */
+    }
+    .greeting {
+        font-size: 2.2rem;
+    }
+    .digital-date {
+        font-size: 2.0rem;
+    }
+    .theme-toggle {
+        font-size: 1.4rem;
+        padding: 15px 30px;
+        gap: 10px;
+    }
+    .decorative {
+        font-size: 2.5rem;
+        gap: 1.2rem;
+    }
+}
